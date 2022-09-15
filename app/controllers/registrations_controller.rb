@@ -10,7 +10,6 @@ class RegistrationsController < Devise::RegistrationsController
           token: params[:payment]["token"], user_id: resource.id })
 
         flash[:error] = "Please check registration errors" unless @payment.valid?
-
         begin
           @payment.process_payment
           @payment.save
